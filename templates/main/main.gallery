@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <div class="culmn">
+            <!--Home page style-->
+
+
+
+
+            <!--Home Sections-->
+
+            <section id="hello" class="model-banner bg-mega">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="main_home text-center">
+                            <div class="model_text">
+                                <h1 class="text-white text-uppercase">Gallery</h1>
+                                <ol class="breadcrumb">
+                                    <li><a href="{% url 'home' %}">Home</a></li>
+                                    <li class="active"><a >Gallery</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div><!--End off row-->
+                </div><!--End off container -->
+            </section> <!--End off Home Sections-->
+
+
+
+
+            <section id="gallery" class="gallery margin-top-120 bg-grey">
+                <div class="container">
+                    <div class="row">
+                        <div class="main-gallery roomy-80">
+                            <div class="col-md-12">
+                                <div class="head_title text-left sm-text-center wow fadeInDown">
+                                    <h2>Our Videos</h2>
+                                    <h5><em>Some our recent works is here. Discover them now!</em></h5>
+                                    <div class="separator_left"></div>
+                                </div>
+                            </div>
+                            <div style="clear: both;"></div>
+                            <div class="video-grid">
+                                {% for video in videos %}
+                                    <div class="video-col">
+                                        <div class="video-container">
+                                            <video class="video" style="max-height: 200px; border-radius: 10px;" muted>
+                                                <source src="{{ video.video_file.url }}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                            <div class="play-button round-button" onclick="openModal('{{ video.video_file.url }}')"></div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Modal -->
+                            <div id="videoModal" class="modal" style="display: none;">
+                                <div class="modal-content">
+                                    <span class="close" onclick="closeModal()">&times;</span>
+                                    <video id="modalVideo" controls style="max-height: 600px;">
+                                        <source src="" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                            
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- gallery from database and models  -->
+            <section id="gallery" class="gallery margin-top-120 bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="main-gallery main-model roomy-80">
+                            <div class="col-md-12">
+                                <div class="head_title text-left sm-text-center wow fadeInDown">
+                                    <h2>Our Photos</h2>
+                                    <h5><em>Some our recent works is here.</em></h5>
+                                    <div class="separator_left"></div>
+                                </div>
+                            </div>
+            
+                            <div class="col-md-12 m-bottom-60">
+                                <div class="button-group">
+                                    <button onclick="filterImages('all')">View All</button>
+                                    <button onclick="filterImages('artist')">Artist</button>
+                                    <button onclick="filterImages('fashion')">Fashion</button>
+                                    <button onclick="filterImages('street')">Street Style</button>
+                                    <button onclick="filterImages('advertisement')">Advertisement</button>
+                                </div>
+                            </div>
+                            
+                            <div style="clear: both;"></div>
+                            
+                            <div class="gallery-gallerypage">
+                                <div class="grid-container">
+                                    <!-- Street Style -->
+                                    {% for image in images_by_category.street %}
+                                        <div class="street" onclick="openModal('{{ image.image.url }}')">
+                                            <img alt="Street Style" src="{{ image.image.url }}">
+                                        </div>
+                                    {% endfor %} 
+            
+                                    {% for image in images_by_category.fashionista %}
+                                    <!-- Fashion -->
+                                        <div class="fashion" onclick="openModal('{{ image.image.url }}')">
+                                            <img alt="Fashionista" src="{{ image.image.url }}">
+                                        </div>
+                                    {% endfor %} 
+                                    
+                                    <!-- Artist -->
+                                    {% for image in images_by_category.artist %}
+                                        <div class="artist" onclick="openModal('{{ image.image.url }}')">
+                                            <img alt="Artist" src="{{ image.image.url }}">
+                                        </div>
+                                    {% endfor %}
+                                    
+                                    <!-- Advertisement -->
+                                    {% for image in images_by_category.advertisement %}
+                                        <div class="advertisement" onclick="openModal('{{ image.image.url }}')">
+                                            <img alt="Advertisement" src="{{ image.image.url }}">                                       
+                                        </div>
+                                    {% endfor %} 
+                                </div>
+                            </div>
+                            
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div id="imageModal" class="modal-modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content-content" id="modalImage">
+            </div>
+
+            <!-- gallery from database and models  -->
+
+
+
+
+
+            <!--Company section-->
+
+            <section id="company" class="company bg-light">
+                <div class="container" style="padding-bottom: 50px;">
+                    <div class="row">
+                        <div class="main_company roomy-100 text-center">
+                            <h3 class="text-uppercase">VividVision.</h3>
+                            <!-- <p>7th floor - Palace Building - 221b Walk of Fame - London- United Kingdom</p>
+                            <p>(+84). 123. 456. 789  -  info@poiseidon.lnk</p> -->
+
+                            <div class="col-md-6">
+                                <div class="action_item">
+                                    <a href="https://wa.me/96893379835">
+                                        <i class="fa fa-whatsapp" id="contact-logo"></i>
+                                        <h4 class="text-uppercase m-top-20">WhatsApp</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="action_item">
+                                    <a href="mailto:Info@vividvisiongcc.com">
+                                        <i class="fa fa-envelope-o" id="contact-logo"></i>
+                                        <h4 class="text-uppercase m-top-20">Email</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- scroll up-->
+            <div class="scrollup">
+                <a href="#"><i class="fa fa-chevron-up"></i></a>
+            </div><!-- End off scroll up -->
+
+
+
+
+
+
+        </div>
+
+{% endblock content %}
+     

@@ -1,0 +1,318 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+       
+
+
+        <div class="culmn">
+            <!--Home page style-->
+
+
+         
+
+
+            <!--Home Sections-->
+
+            <section id="hello" class="about-banner bg-mega">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="main_home text-center">
+                            <div class="about_text">
+                                <h1 class="text-white text-uppercase">About Us</h1>
+                                <ol class="breadcrumb">
+                                    <li><a href="{% url 'home' %}">Home</a></li>
+                                    <li class="active"><a>About Us</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> 
+
+
+            <!--About Sections-->
+            <section id="feature" class="ab_feature roomy-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_ab_feature">
+
+                            <div class="col-md-6">
+                                <!-- Head Title -->
+                                <div class="head_title">
+                                    <h2>Story about us</h2>
+                                    <h5><em>Creativity can be a challenging pursuit</em></h5>
+                                    <div class="separator_left"></div>
+                                </div><!-- End off Head Title -->
+
+                                <div class="ab_feature_content wow fadeIn m-top-40">
+                                    <p>Vivid Vision Agency shortly named V.V.A was established as a subsidiary of azhang sanat gostar company in 2013 in Iran. In 2023, the company rebranded as Wide Sky International to reflect its evolving and expertise in Oman. 
+                                        With extensive experience in photography, videography, content production and commercial advertising, as well as short films, V.V.A specializes in various genres including portraits, landscape, fashion and cosmetics photography and videography. 
+                                        The agency has collaborated with many renowned brands.</p>
+
+                                    <p>V.V.A continues to provide high quality visual content and creative solutions across multiple industries.</p>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="ab_feature_photo wow fadeIn sm-m-top-40">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="ab_feature_item sm-m-top-20">
+                                                <img src="assets/images/ab-f-img1.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="ab_feature_item sm-m-top-20">
+                                                <img src="assets/images/ab-f-img2.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="ab_feature_item sm-m-top-20">
+                                                <img src="assets/images/ab-f-img3.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="ab_feature_item m-top-20">
+                                                <img src="assets/images/ab-f-img4.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="ab_feature_item m-top-20">
+                                                <img src="assets/images/ab-f-img5.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="ab_feature_item m-top-20">
+                                                <img src="assets/images/ab-f-img6.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="ab_feature_item m-top-20">
+                                                <img src="assets/images/ab-f-img7.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="ab_feature_item m-top-20">
+                                                <img src="assets/images/ab-f-img8.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="ab_feature_item m-top-20">
+                                                <img src="assets/images/ab-f-img9.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--End off row-->
+                </div><!--End off container -->
+            </section>
+
+
+            <!--Simple Section-->
+            <section id="simple" class="simple bg-grey roomy-80">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_simple text-center">
+                            <div class="col-md-12">
+                                <h2>The Journey of Imagination Awaits</h2>
+                                <p>Unleashing creativity often presents challenges, but it also opens doors to new possibilities. Our investigations show that those who embrace creativity gain clarity and insight. By navigating through obstacles, you can transform your ideas into impactful solutions. Whether you’re seeking inspiration or collaboration, we’re here to support your creative vision.</p>
+
+                                <a href="{% url 'contactus' %}" class="btn btn-default m-top-40">Contact Us <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!--Models section-->
+            <section id="teams" class="teams roomy-80">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_teams">
+                            <div class="col-md-12">
+                                <div class="head_title text-left sm-text-center wow fadeInDown">
+                                    <h2>Meet our team</h2>
+                                    <h5><em>Success is a journey that thrives on teamwork; it’s the collaboration of creative minds that makes it possible</em></h5>
+                                    <div class="separator_left"></div>
+                                </div>
+                            </div>
+                            <div class="row custom-center">
+                                {% for member in team_members %}
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="team_item m-top-30">
+                                        <div class="team_img">
+                                            <img src="{{ member.image.url }}" alt="{{ member.name }}" />
+                                            <div class="team_caption">
+                                                <h4>{{ member.name }}</h4>
+                                                <h5><em>{{ member.role }}</em></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!--Testimonial Section-->
+            <!-- <section id="testimonial" class="testimonial fix roomy-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_testimonial text-center">
+
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active testimonial_item">
+                                        <div class="col-sm-10 col-sm-offset-1">
+
+                                            <div class="test_authour">
+                                                <img class="img-circle" src="assets/images/test-img.jpg" alt="" />
+                                                <h6 class="m-top-20">Laingockien</h6>
+                                                <h5><em>The most handsome men in the world</em> </h5>
+                                            </div>
+
+                                            <p class=" m-top-40">I’ve just wordked with Pouseidon last week. Uhm.  
+                                                I can say this is the best team that I have ever worked together. 
+                                                All of them are very, very professional and creative, their unbelieved 
+                                                plan made our concept become perfect. I recommend you to try one of
+                                                their solutions youself. Once again,  thanks so much, Pouseidon. 5 stars for you!! </p>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="item testimonial_item">
+                                        <div class="col-sm-10 col-sm-offset-1">
+
+                                            <div class="test_authour">
+                                                <img class="img-circle" src="assets/images/test-img.jpg" alt="" />
+                                                <h6 class="m-top-20">Laingockien</h6>
+                                                <h5><em>The most handsome men in the world</em> </h5>
+                                            </div>
+
+                                            <p class=" m-top-40">I’ve just wordked with Pouseidon last week. Uhm.  
+                                                I can say this is the best team that I have ever worked together. 
+                                                All of them are very, very professional and creative, their unbelieved 
+                                                plan made our concept become perfect. I recommend you to try one of
+                                                their solutions youself. Once again,  thanks so much, Pouseidon. 5 stars for you!! </p>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="item testimonial_item">
+                                        <div class="col-sm-10 col-sm-offset-1">
+
+                                            <div class="test_authour">
+                                                <img class="img-circle" src="assets/images/test-img.jpg" alt="" />
+                                                <h6 class="m-top-20">Laingockien</h6>
+                                                <h5><em>The most handsome men in the world</em> </h5>
+                                            </div>
+
+                                            <p class=" m-top-40">I’ve just wordked with Pouseidon last week. Uhm.  
+                                                I can say this is the best team that I have ever worked together. 
+                                                All of them are very, very professional and creative, their unbelieved 
+                                                plan made our concept become perfect. I recommend you to try one of
+                                                their solutions youself. Once again,  thanks so much, Pouseidon. 5 stars for you!! </p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                    <span class="fa fa-long-arrow-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <span class="slash">/</span>
+                                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                    <span class="fa fa-long-arrow-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>  -->
+
+            <section class="contact fix">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="head_title text-left sm-text-center wow fadeInDown">
+                            <h2>Our Partners</h2>
+                            <h5><em>Trusted partnerships that drive mutual success.</em></h5>
+                            <div class="separator_left"></div>
+                        </div>
+                    </div>
+                    <div class="row text-center" id="companies-raw">
+                        {% for partner in partners %}
+                        <div class="col-md-2 col-xs-4 logo-item">
+                            <img src="{{ partner.image }}" alt="{{ partner.name }}" class="img-responsive center-block">
+                            <p>{{ partner.name }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!--Company section-->
+
+            <section id="company" class="company bg-light">
+                <div class="container" style="padding-bottom: 50px;">
+                    <div class="row">
+                        <div class="main_company roomy-100 text-center">
+                            <h3 class="text-uppercase">VividVision.</h3>
+                            <!-- <p>7th floor - Palace Building - 221b Walk of Fame - London- United Kingdom</p>
+                            <p>(+84). 123. 456. 789  -  info@poiseidon.lnk</p> -->
+
+                            <div class="col-md-6">
+                                <div class="action_item">
+                                    <a href="https://wa.me/96893379835">
+                                        <i class="fa fa-whatsapp" id="contact-logo"></i>
+                                        <h4 class="text-uppercase m-top-20">WhatsApp</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="action_item">
+                                    <a href="mailto:Info@vividvisiongcc.com">
+                                        <i class="fa fa-envelope-o" id="contact-logo"></i>
+                                        <h4 class="text-uppercase m-top-20">Email</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </section>
+
+
+           
+
+            <!-- scroll up-->
+            <div class="scrollup">
+                <a href="#"><i class="fa fa-chevron-up"></i></a>
+            </div><!-- End off scroll up -->
+
+
+          
+
+
+
+
+        </div>
+
+{% endblock content %}

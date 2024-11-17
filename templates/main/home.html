@@ -1,0 +1,827 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+        <div class="culmn">
+            <!--Home Sections-->
+
+            <!-- <section id="hello" class="home bg-mega">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="main_home text-center">
+                            <div class="home_text">
+                                <h4 class="text-white text-uppercase">A fresh hub of creativity</h4>
+                                <h1 class="text-white text-uppercase">Timeless design never goes out of style</h1>
+
+                                <div class="separator"></div>
+
+                                <h5 class=" text-uppercase text-white"><em>One day, our dreams will come to life, fueled by our passion and creativity, creating something truly inspiring.</em></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>  -->
+
+            <section id="hello1" class="home bg-mega">
+                {% for banner in banners %}
+                    <video autoplay loop muted class="background-video">
+                        <source src="{{ banner.video_banner.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% endfor %}
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="main_home text-center">
+                            <div class="col-md-3 main-home-text">
+                                <!-- <h4 class="text-white text-uppercase">A fresh hub of creativity</h4> -->
+                                <h1 class="text-white" id="home-text-h1">.Innovate. .ThinkAds. .AdGenius.</h1>
+                                <div class="separator"></div>
+                                <!-- <h5 class="text-uppercase text-white"><em>One day, our dreams will come to life, fueled by our passion and creativity, creating something truly inspiring.</em></h5> -->
+                            </div>
+                        </div>
+                    </div><!--End of row-->
+                </div><!--End of container -->
+            </section> <!--End of Home Section-->
+
+
+            <!--About Sections-->
+            <section id="feature" class="feature p-top-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_feature">
+
+                            <div class="col-md-6 m-top-120">
+                                <!-- Head Title -->
+                                <div class="head_title">
+                                    <h2>Inspired by the currents of creativity</h2>
+                                    <h5><em>we bring fresh ideas and elegant solutions to the forefront of the industry</em></h5>
+                                    <div class="separator_left"></div>
+                                </div><!-- End off Head Title -->
+
+                                <div class="feature_content wow fadeIn m-top-40">
+                                    <p>
+                                        An independent global creative company headquartered in Muscat, Oman, Vivid Vision Agency has successfully collaborated with clients in Dubai, Iran, and Turkey. We are dedicated to expanding our presence across the GCC and beyond, ensuring we provide exceptional creative solutions that elevate brands throughout the region.</p>
+
+                                    <p>Our digital marketing strategies are designed to connect with audiences effectively, while we establish a solid media foundation that supports growth. We excel in content creation, developing captivating materials that resonate with your target market. Additionally, our strategic consultation services help businesses navigate the media landscape, ensuring they have the tools and insights needed for success.</p>
+
+                                    <div class="feature_btns m-top-30">
+                                        <a href="{% url 'about' %}" class="btn btn-default text-uppercase">more about us <i class="fa fa-long-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="feature_photo wow fadeIn sm-m-top-40">
+                                    <div class="photo_border"></div>
+                                    <div class="feature_img">
+                                        <img src="{%static 'assets/images/1.jpg' %}" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--End off row-->
+                </div><!--End off container -->
+                <br />
+                <br />
+                <br />
+                <br />
+                <hr />
+                <br />
+                <br />
+
+                <div class="container">
+                    <div class="row">
+                        <div class="main_counter text-center">
+                            <div class="col-md-4">
+                                <div class="counter_item">
+                                    <h2 class="statistic-counter"><em> 156 </em></h2>
+                                    <div class="separator_small"></div>
+                                    <h5>Projects Finished</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="counter_item sm-m-top-40">
+                                    <h2 class="statistic-counter"><em>124</em></h2>
+                                    <div class="separator_small"></div>
+                                    <h5>Happy Clients</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="counter_item sm-m-top-40">
+                                    <h2 class="statistic-counter"><em>1340</em></h2>
+                                    <div class="separator_small"></div>
+                                    <h5>Hours of work</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--End off row-->
+                </div><!--End off container -->
+
+                <br />
+                <br />
+                <br />
+                <hr />
+                <br />
+                <br />
+                <br />
+
+                <!--Our Work Section-->
+                <div class="container">
+                    <div class="row">
+                        <div class="main_work">
+
+                            <div class="col-md-7 col-md-offset-5 col-sm-12 col-xs-12">
+                                <div class="work_item">
+                                    <div class="row">
+                                        <div class="col-md-7 col-sm-12 col-xs-12 text-right pull-right sm-text-center">
+                                            <div class="work_item_img">
+                                                <img src="{%static 'assets/images/fashion.jpg' %}" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-sm-12 col-xs-12 text-right pull-left sm-text-center">
+                                            <div class="work_item_details m-top-80 sm-m-top-20">
+                                                <h4>Fashionista</h4>
+                                                <div class="work_separator1"></div>
+                                                <p class="m-top-40 sm-m-top-10">Fashionista empowers you to express your unique style with creativity and flair</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- End off work-item -->
+
+                            <div class="col-md-7 col-sm-12 col-xs-12">
+                                <div class="work_item">
+                                    <div class="row">
+                                        <div class="col-md-7 col-sm-12 col-xs-12">
+                                            <div class="work_item_img sm-text-center sm-m-top-40">
+                                                <img src="{%static 'assets/images/street.jpg' %}" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-sm-12 col-xs-12 text-left pull-left sm-text-center">
+                                            <div class="work_item_details m-top-80 sm-m-top-20">
+                                                <h4>Street Style</h4>
+                                                <div class="work_separator2"></div>
+                                                <p class="m-top-40 sm-m-top-10">Street style reflects urban culture through bold, authentic fashion</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- End off work-item -->
+
+                            <div class="col-md-7 col-md-offset-5 col-sm-12 col-xs-12">
+                                <div class="work_item">
+                                    <div class="row">
+                                        <div class="col-md-7 col-sm-12 col-xs-12 text-right pull-right sm-text-center">
+                                            <div class="work_item_img sm-m-top-40">
+                                                <img src="{%static 'assets/images/artist.avif' %}" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-sm-12 col-xs-12 text-right pull-left sm-text-center">
+                                            <div class="work_item_details m-top-80 sm-m-top-20">
+                                                <h4>Artist</h4>
+                                                <div class="work_separator1"></div>
+                                                <p class="m-top-40 sm-m-top-10">Weddings celebrate love and capture unforgettable moments</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- End off work-item -->
+
+                            <div class="col-md-7 col-sm-12 col-xs-12">
+                                <div class="work_item">
+                                    <div class="row">
+                                        <div class="col-md-7 col-sm-12 col-xs-12">
+                                            <div class="work_item_img sm-text-center sm-m-top-40">
+                                                <img src="{%static 'assets/images/ad.jpg' %}" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-sm-12 col-xs-12 text-left pull-left sm-text-center">
+                                            <div class="work_item_details m-top-80 sm-m-top-20">
+                                                <h4>Advertisement</h4>
+                                                <div class="work_separator2"></div>
+                                                <p class="m-top-40 sm-m-top-10">Capture attention and inspire action with powerful, engaging advertising</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- End off work-item -->
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <br />
+                <br />
+                <br />
+                <hr />
+                <br />
+                <br />
+                <br />
+
+                <div class="container">
+                    <div class="row">
+
+
+                        <div class="service_content_area">
+                            <!-- Service LEFT SIDE -->
+                            <div class="col-md-4 service_left wow fadeInLeft">
+                                <!-- Service -->
+
+                                <div class="service_items">
+                                    <div class="row">
+
+                                        <!-- ICON -->
+                                        <div class="col-xs-3">
+                                            <div class="hexagon">
+                                                <div class="about-content">
+                                                    <span class="fa fa-bullhorn"></span>
+                                                </div>    
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-9">
+                                            <div class="text-left service_left_text">
+                                                <h4 class="main-color">Advertising</h4>
+                                                <p>We create impactful advertising to enhance brand visibility and drive engagement across various platforms.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- end Single Service item -->
+
+                                <!-- Service -->
+                                <div class="service_items">
+                                    <div class="row">
+                                        <!-- ICON -->
+                                        <div class="col-xs-3">
+                                            <div class="hexagon">
+                                                <div class="about-content">
+                                                    <span class="fa fa-star"></span>
+                                                </div>    
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-9">
+                                            <div class="text-left service_left_text">
+                                                <h4 class="main-color">Branding & Promotions</h4>
+                                                <p>We develop strong branding strategies and engaging promotions to elevate your brand’s visibility and impact.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- end Single Service item -->
+
+                                <!-- Service -->
+                                <div class="service_items">
+                                    <div class="row">
+                                        <!-- ICON -->
+                                        <div class="col-xs-3">
+                                            <div class="hexagon">
+                                                <div class="about-content">
+                                                    <span class="fa fa-laptop"></span>
+                                                </div>    
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-9">
+                                            <div class="text-left service_left_text">
+                                                <h4 class="main-color">Web & Mobile app Development</h4>
+                                                <p>We design and build user-friendly web and mobile applications that enhance functionality and drive engagement.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end Single Service item -->
+                               
+
+
+                            </div>
+                            <!-- /END Service LEFT -->
+
+                            <!-- PHONE IMAGE -->
+                            <div class="col-md-4 sm-m-top-40 sm-text-center">
+                                <div class="service-img wow bounceIn">
+                                    <img src="{%static 'assets/images/banner.png' %}" alt="Architect Img">
+                                </div>
+                            </div>
+
+                            <!-- Service RIGHT -->
+                            <div class="col-md-4 service_right wow fadeInRight sm-m-top-40" >
+
+                                <!-- Service -->
+                                <div class="service_items">
+                                    <div class="row">
+
+                                        <div class="col-xs-9">
+                                            <div class="service_right_text p-l-15 text-right">
+                                                <h4 class="main-color">Creative Designing</h4>
+                                                <p>We craft innovative designs that captivate and communicate your brand’s message effectively across all platforms.</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- ICON -->
+                                        <div class="col-xs-3">
+                                            <div class="hexagon">
+                                                <div class="about-content">
+                                                    <span class="fa fa-paint-brush"></span>
+                                                </div>    
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div> <!-- end Single Service item -->
+                                <div class="service_items">
+                                    <div class="row">
+
+                                        <div class="col-xs-9">
+                                            <div class="service_right_text p-l-15 text-right">
+                                                <h4 class="main-color">Concept Development</h4>
+                                                <p>We transform ideas into actionable concepts, providing creative solutions that align with your vision and goals.</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- ICON -->
+                                        <div class="col-xs-3">
+                                            <div class="hexagon">
+                                                <div class="about-content">
+                                                    <span class="fa fa-cogs"></span>
+                                                </div>    
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div> <!-- end Single Service item -->
+
+
+
+
+                                <!-- Service -->
+                                <div class="service_items">
+                                    <div class="row">
+
+                                        <div class="col-xs-9">
+                                            <div class="service_right_text p-l-15 text-right">
+                                                <h4 class="main-color">Photography & Videography</h4>
+                                                <p>We capture stunning visuals and engaging videos that tell your story and highlight your brand’s essence.</p>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- ICON -->
+                                        <div class="col-xs-3">
+                                            <div class="hexagon">
+                                                <div class="about-content">
+                                                    <span class="fa fa-camera"></span>
+                                                </div>    
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div><!-- end Single Service item -->  
+
+                               
+                                
+
+
+                            </div><!-- /END Service RIGHT -->
+                        </div>
+                    </div> <!--End off row -->
+                </div>
+
+            </section> <!--End off About section -->
+
+
+
+       
+
+
+            <section id="gallery" class="gallery margin-top-120 bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="main-gallery main-model roomy-80">
+                            <div class="col-md-12">
+                                <div class="head_title text-left sm-text-center wow fadeInDown">
+                                    <h2>Our Photos</h2>
+                                    <h5><em>Some our recent works is here.</em></h5>
+                                    <div class="separator_left"></div>
+                                </div>
+                            </div>
+            
+                           
+                            
+                            <div style="clear: both;"></div>
+                            
+                            <div class="col-md-12 gallery-gallerypage">
+                                <div class="grid-container-home">
+                                    <div class="grid-container-home-div">
+                                        <div class="image-container">
+                                            <img alt="" src="{%static 'assets/images/gallery/fashionista/7.jpeg' %}">
+                                            <span class="overlay-text">Weomen fashion</span>
+                                        </div>
+                                    </div>
+                                    <div class="grid-container-home-div">
+                                        <div class="image-container">
+                                            <img alt="" src="{%static 'assets/images/gallery/fashionista/12.jpg' %}">
+                                            <span class="overlay-text">Men fashion</span>   
+                                        </div>
+                                    </div>
+                                    <div class="grid-container-home-div">
+                                        <div class="image-container">
+                                            <img alt="" src="{%static 'assets/images/model.jpg' %}">
+                                            <span class="overlay-text">Street style</span>
+                                        </div>
+                                    </div>
+                                    <div class="grid-container-home-div">
+                                        <div class="image-container">
+                                            <img alt="" src="{%static 'assets/images/6.jpg' %}">
+                                            <span class="overlay-text">Makeup artist</span>                                      
+                                        </div>
+                                    </div>
+                                    <div class="grid-container-home-div">
+                                        <div class="image-container">
+                                            <img alt="" src="{%static 'assets/images/gallery/fashionista/21.jpeg' %}">
+                                            <span class="overlay-text">Studio</span>                                    
+                                        </div>
+                                    </div>
+                                    <div class="grid-container-home-div">
+                                        <div class="image-container">
+                                            <img alt="" src="{%static 'assets/images/gallery/street/3.jpg' %}">
+                                            <span class="overlay-text">Street Style</span>                                      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+ 
+
+            <!--Testimonial Section-->
+            <!-- <section id="testimonial" class="testimonial fix roomy-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_testimonial text-center">
+
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active testimonial_item">
+                                        <div class="col-sm-10 col-sm-offset-1">
+
+                                            <div class="test_authour">
+                                                <img class="img-circle" src="{%static 'assets/images/test-img.jpg' %}" alt="" />
+                                                <h6 class="m-top-20">Laingockien</h6>
+                                                <h5><em>The most handsome men in the world</em> </h5>
+                                            </div>
+
+                                            <p class=" m-top-40">I’ve just wordked with Pouseidon last week. Uhm.  
+                                                I can say this is the best team that I have ever worked together. 
+                                                All of them are very, very professional and creative, their unbelieved 
+                                                plan made our concept become perfect. I recommend you to try one of
+                                                their solutions youself. Once again,  thanks so much, Pouseidon. 5 stars for you!! </p>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="item testimonial_item">
+                                        <div class="col-sm-10 col-sm-offset-1">
+
+                                            <div class="test_authour">
+                                                <img class="img-circle" src="{%static 'assets/images/test-img.jpg' %}" alt="" />
+                                                <h6 class="m-top-20">Laingockien</h6>
+                                                <h5><em>The most handsome men in the world</em> </h5>
+                                            </div>
+
+                                            <p class=" m-top-40">I’ve just wordked with Pouseidon last week. Uhm.  
+                                                I can say this is the best team that I have ever worked together. 
+                                                All of them are very, very professional and creative, their unbelieved 
+                                                plan made our concept become perfect. I recommend you to try one of
+                                                their solutions youself. Once again,  thanks so much, Pouseidon. 5 stars for you!! </p>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="item testimonial_item">
+                                        <div class="col-sm-10 col-sm-offset-1">
+
+                                            <div class="test_authour">
+                                                <img class="img-circle" src="{%static 'assets/images/test-img.jpg' %}" alt="" />
+                                                <h6 class="m-top-20">Laingockien</h6>
+                                                <h5><em>The most handsome men in the world</em> </h5>
+                                            </div>
+
+                                            <p class=" m-top-40">I’ve just wordked with Pouseidon last week. Uhm.  
+                                                I can say this is the best team that I have ever worked together. 
+                                                All of them are very, very professional and creative, their unbelieved 
+                                                plan made our concept become perfect. I recommend you to try one of
+                                                their solutions youself. Once again,  thanks so much, Pouseidon. 5 stars for you!! </p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                    <span class="fa fa-long-arrow-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <span class="slash">/</span>
+                                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                    <span class="fa fa-long-arrow-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <br />
+                <br />
+                <br />
+                <hr />
+                <br />
+                <br />
+                <br />
+
+                <div class="container">
+                    <div class="row">
+                        <div class="main_cbrand text-center">
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <div class="cbrand_item m-bottom-10">
+                                    <a href=""><img src="{%static 'assets/images/brand-img1.png' %}" alt="" /></a>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <div class="cbrand_item m-bottom-10">
+                                    <a href=""><img src="{%static 'assets/images/brand-img2.png' %}" alt="" /></a>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <div class="cbrand_item m-bottom-10">
+                                    <a href=""><img class="" src="{%static 'assets/images/brand-img3.png' %}" alt="" /></a>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <div class="cbrand_item m-bottom-10">
+                                    <a href=""><img src="{%static 'assets/images/brand-img4.png' %}" alt="" /></a>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <div class="cbrand_item m-bottom-10">
+                                    <a href=""><img src="{%static 'assets/images/brand-img5.png' %}" alt="" /></a>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <div class="cbrand_item m-bottom-10">
+                                    <a href=""><img src="{%static 'assets/images/brand-img1.png' %}" alt="" /></a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </section> <!--End off Testimonial section -->
+
+            <!--Models section-->
+
+            <!-- <section id="models" class="models bg-grey roomy-80">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_models text-center">
+                            <div class="col-md-12">
+                                <div class="head_title text-left sm-text-center wow fadeInDown">
+                                    <h2>Gallery</h2>
+                                    <h5><em>Explore the heart and soul that drives Pouseidon’s success!</em></h5>
+                                    <div class="separator_left"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="model_item m-top-30">
+                                    <div class="model_img">
+                                        <img src="{%static 'assets/images/model-img01.jpg' %}" alt="" />
+                                        <div class="model_caption">
+                                            <h5 class="text-white">Angela Baby</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="model_item m-top-30">
+                                    <div class="model_img">
+                                        <img src="{%static 'assets/images/model-img02.jpg' %}" alt="" />
+                                        <div class="model_caption">
+                                            <h5 class="text-white">Angela Baby</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="model_item m-top-30">
+                                    <div class="model_img">
+                                        <img src="{%static 'assets/images/model-img03.jpg' %}" alt="" />
+                                        <div class="model_caption">
+                                            <h5 class="text-white">Angela Baby</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="model_item m-top-30">
+                                    <div class="model_img">
+                                        <img src="{%static 'assets/images/model-img04.jpg' %}" alt="" />
+                                        <div class="model_caption">
+                                            <h5 class="text-white">Angela Baby</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="model_item m-top-30">
+                                    <div class="model_img">
+                                        <img src="{%static 'assets/images/model-img05.jpg' %}" alt="" />
+                                        <div class="model_caption">
+                                            <h5 class="text-white">Angela Baby</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="model_item m-top-30">
+                                    <div class="model_img">
+                                        <img src="{%static 'assets/images/model-img06.jpg' %}" alt="" />
+                                        <div class="model_caption">
+                                            <h5 class="text-white">Angela Baby</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="model_item m-top-30">
+                                    <div class="model_img">
+                                        <img src="{%static 'assets/images/model-img07.jpg' %}" alt="" />
+                                        <div class="model_caption">
+                                            <h5 class="text-white">Angela Baby</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6">
+                                <div class="model_item meet_team m-top-30">
+                                    <a href="{% url 'gallery' %}">Meet All Them <i class="fa fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
+            <!--Contact Us Section-->
+            <section id="contact" class="contact fix">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_contact p-top-100">
+
+                            <div class="col-md-6 sm-m-top-30">
+                                <form class=""  method="post" action="/contact/">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group"> 
+                                                <label for="name">Your Name *</label>
+                                                <input id="name" name="name" type="text" class="form-control" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="email">Your Email *</label>
+                                                <input id="email" name="email" type="text" class="form-control" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <div class="form-group"> 
+                                                <label for="message">Your Message *</label>
+                                                <textarea id="message" name="message" class="form-control" rows="6" required></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-default">SEND MESSAGE <i class="fa fa-long-arrow-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="contact_img">
+                                    <img src="{%static 'assets/images/contact-img.png' %}" alt="" />
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div><!--End off row -->
+                </div><!--End off container -->
+            </section><!--End off Contact Section-->
+
+
+            <section class="contact fix">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="head_title text-left sm-text-center wow fadeInDown">
+                            <h2>Our Partners</h2>
+                            <h5><em>Trusted partnerships that drive mutual success.</em></h5>
+                            <div class="separator_left"></div>
+                        </div>
+                    </div>
+                    <div class="row text-center" id="companies-raw">
+                        {% for partner in partners %}
+                        <div class="col-md-2 col-xs-4 logo-item">
+                            <img src="{{ partner.image }}" alt="{{ partner.name }}" class="img-responsive center-block">
+                            <p>{{ partner.name }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+
+            
+               
+                
+
+
+            <!--Company section-->
+
+            <section id="company" class="company bg-light">
+                <div class="container" style="padding-bottom: 50px;">
+                    <div class="row">
+                        <div class="main_company roomy-100 text-center">
+                            <h3 class="text-uppercase">VividVision.</h3>
+                            <!-- <p>7th floor - Palace Building - 221b Walk of Fame - London- United Kingdom</p>
+                            <p>(+84). 123. 456. 789  -  info@poiseidon.lnk</p> -->
+
+                            <div class="col-md-6">
+                                <div class="action_item">
+                                    <a href="https://wa.me/96893379835">
+                                        <i class="fa fa-whatsapp" id="contact-logo"></i>
+                                        <h4 class="text-uppercase m-top-20">WhatsApp</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="action_item">
+                                    <a href="mailto:Info@vividvisiongcc.com">
+                                        <i class="fa fa-envelope-o" id="contact-logo"></i>
+                                        <h4 class="text-uppercase m-top-20">Email</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- scroll up-->
+            <div class="scrollup">
+                <a href="#"><i class="fa fa-chevron-up"></i></a>
+            </div><!-- End off scroll up -->
+
+
+           
+
+
+
+
+        </div>
+
+{% endblock content %}

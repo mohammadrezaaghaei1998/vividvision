@@ -1,0 +1,4 @@
+static/assets/videos/
+git[[:space:]]lfs[[:space:]]track[[:space:]]static/assets/videos filter=lfs diff=lfs merge=lfs -text
+static/assets/videos/12.mp4 filter=lfs diff=lfs merge=lfs -text
+static/assets/videos/13.mp4 filter=lfs diff=lfs merge=lfs -text
