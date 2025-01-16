@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .image-section {
+        position: relative;
+        background-image: url('{% static "assets/images/blog-image.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        padding-left: 20px;
+      
+    }
+    
+    .section-title {
+        color: rgb(255, 255, 255);
+        font-size: 17px;
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 50px;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        
+    }
+    .section-title a{
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        transition: color 0.7s ease;
+    }
+    .section-title a:hover{
+        color: rgb(51, 51, 51);
+        text-decoration: none;
+    }
+    </style>
+<section class="image-section">
+<div class="overlay">
+    <h1 class="section-title"><img src="{% static 'assets/images/logo.png' %}" width="200" alt=""><a href="{% url 'home' %}" style="font-weight: 100; font-size: 20px;">Home</a> / <strong >Blog</strong></h1>
+</div>
+<div class="container mt-5" >
+    <!-- Blog Post Card -->
+    <div class="blog mb-4">
+        <!-- Blog Image -->
+        <div class="row align-items-center" style="margin-top: 230px;">
+            <div class="col-lg-5 mr-5">
+                <img src="{{ blog.image.url }}" width="500"  class=" mb-5" alt="blog.title">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="blog-card-title mb-5">{{ blog.title }}</h2>
+                <p class="blog-card-text mt-4">
+                    <small class="text-muted">
+                        <strong>Author:</strong> {{ blog.author }} 
+                    </small>
+                </p>
+                <p class="blog-card-text">
+                    <small class="text-muted">
+                        <strong>Date:</strong> {{ blog.date|date:"F j, Y" }}
+                    </small>
+                </p>
+                <h6 class="mt-5"> {{ blog.description }}</h6>
+
+            </div>
+            
+        </div>
+        <div class="blog-card-body">
+            <!-- Blog Title -->
+           
+
+            <!-- Blog Text -->
+            <p class="blog-card-text">{{ blog.text_one }}</p>
+            <p class="blog-card-text">{{ blog.text_two }}</p>
+            <p class="blog-card-text">{{ blog.text_three }}</p>
+            <p class="blog-card-text">{{ blog.text_four }}</p>
+            <p class="blog-card-text">{{ blog.text_five }}</p>
+            <p class="blog-card-text">{{ blog.text_six }}</p>
+            <p class="blog-card-text">{{ blog.text_seven }}</p>
+           
+            <h1>FQAs</h1>
+            {% if blog.faqs_one and blog.faqs_one_answer %}
+                <h3 class="blog-card-text faqs">{{ blog.faqs_one }}</h3>
+                <p class="blog-card-text">{{ blog.faqs_one_answer }}</p>
+            {% endif %}
+            
+            {% if blog.faqs_two and blog.faqs_two_answer %}
+                <h3 class="blog-card-text faqs">{{ blog.faqs_two }}</h3>
+                <p class="blog-card-text">{{ blog.faqs_two_answer }}</p>
+            {% endif %}
+            
+            {% if blog.faqs_three and blog.faqs_three_answer %}
+                <h3 class="blog-card-text faqs">{{ blog.faqs_three }}</h3>
+                <p class="blog-card-text">{{ blog.faqs_three_answer }}</p>
+            {% endif %}
+            
+            {% if blog.faqs_four and blog.faqs_four_answer %}
+                <h3 class="blog-card-text faqs">{{ blog.faqs_four }}</h3>
+                <p class="blog-card-text">{{ blog.faqs_four_answer }}</p>
+            {% endif %}
+            
+            {% if blog.faqs_five and blog.faqs_five_answer %}
+                <h3 class="blog-card-text faqs">{{ blog.faqs_five }}</h3>
+                <p class="blog-card-text">{{ blog.faqs_five_answer }}</p>
+            {% endif %}
+            
+            {% if blog.faqs_six and blog.faqs_six_answer %}
+                <h3 class="blog-card-text faqs">{{ blog.faqs_six }}</h3>
+                <p class="blog-card-text">{{ blog.faqs_six_answer }}</p>
+            {% endif %}
+            
+            {% if blog.faqs_seven and blog.faqs_seven_answer %}
+                <h3 class="blog-card-text faqs">{{ blog.faqs_seven }}</h3>
+                <p class="blog-card-text">{{ blog.faqs_seven_answer }}</p>
+            {% endif %}
+
+
+            <!-- Blog Author and Date -->
+            <p class="blog-card-text">
+                <small class="text-muted">
+                    <strong>Author:</strong>  {{ blog.author }} |
+                    <strong>Date:</strong> {{ blog.date|date:"F j, Y" }}
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+
+</section>
+{% endblock content %}

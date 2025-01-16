@@ -1,202 +1,136 @@
-"use strict";
-jQuery(document).ready(function ($) {
+// document.addEventListener('scroll', () => {
+//   const scrollPosition = window.scrollY;
+//   const headerHeight = document.querySelector('header').offsetHeight;
+
+//   // Increase the zoom intensity to 10x
+//   const scaleFactor = 1 + (scrollPosition / headerHeight) * 70;
+
+//   const video = document.querySelector('.home-page-main-video');
+//   video.style.transform = `scale(${scaleFactor})`; 
+// });
 
 
-    //==========================================
-    //for Preloader
-    //=========================================
 
-    $(window).load(function () {
-        $("#loading").fadeOut(500);
-    });
+// const finalText = "Wide . Sky . International";
+// const container = document.getElementById("text");
+// const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+// const animationDuration = 2000; // 2 seconds total
+
+// finalText.split('').forEach((targetLetter, index) => {
+//   const letterContainer = document.createElement('div');
+//   letterContainer.className = 'letter-container';
+//   const letterSlot = document.createElement('div');
+//   letterSlot.className = 'letter-slot';
+//   letterContainer.appendChild(letterSlot);
+//   container.appendChild(letterContainer);
+
+//   const iterations = 10 + Math.floor(Math.random() * 5);
+//   const iterationDuration = animationDuration / iterations;
+  
+//   const isEven = index % 2 === 0;
+  
+//   let currentIteration = 0;
+  
+//   function updateLetter() {
+//     if (currentIteration >= iterations) {
+//       letterSlot.textContent = targetLetter;
+//       letterSlot.style.animation = `${isEven ? 'slideDown' : 'slideUp'} 0.3s ease-out`;
+//       return;
+//     }
+    
+//     const randomLetter = letters[Math.floor(Math.random() * letters.length)];
+//     letterSlot.textContent = randomLetter;
+//     letterSlot.style.animation = `${isEven ? 'slideDown' : 'slideUp'} 0.3s ease-out`;
+    
+//     currentIteration++;
+//     setTimeout(updateLetter, iterationDuration);
+//   }
+  
+//   setTimeout(() => {
+//     updateLetter();
+//   }, index * 100);
+// });
 
 
-    //==========================================
-    // Mobile menu
-    //=========================================
-    $('#navbar-menu').find('a[href*="#"]:not([href="#"])').click(function () {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-                $('html,body').animate({
-                    scrollTop: (target.offset().top - 80)
-                }, 1000);
-                if ($('.navbar-toggle').css('display') != 'none') {
-                    $(this).parents('.container').find(".navbar-toggle").trigger("click");
-                }
-                return false;
+
+
+
+
+// Main slider right side of the page
+// document.addEventListener('DOMContentLoaded', function () {
+//     const elements = document.querySelectorAll('#header, #aboutus, #services, #topclients, #blogs, #contactus, #partners'); 
+//     const sliderItems = document.querySelectorAll('.slider-item');
+  
+//     function updateSlider() {
+//         const scrollPosition = window.scrollY;
+  
+//         elements.forEach((element, index) => {
+//             const elementTop = element.offsetTop;
+//             const elementBottom = elementTop + element.offsetHeight;
+  
+//             if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+//                 sliderItems.forEach(item => item.classList.remove('active'));
+//                 sliderItems[index].classList.add('active');
+//             }
+//         });
+//     }
+  
+//     sliderItems.forEach((item, index) => {
+//         item.addEventListener('click', function () {
+//             const targetElement = elements[index];
+//             window.scrollTo({
+//                 top: targetElement.offsetTop,
+//                 behavior: 'smooth'
+//             });
+//         });
+//     });
+  
+//     window.addEventListener('scroll', updateSlider);
+// });
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const elements = document.querySelectorAll('#header, #aboutus, #services, #topclients, #blogs, #contactus, #partners'); 
+    const sliderItems = document.querySelectorAll('.slider-item');
+    let isScrolling = false; // Flag to temporarily disable updateSlider
+  
+    function updateSlider() {
+        if (isScrolling) return; // Skip updating during smooth scrolling
+
+        const scrollPosition = window.scrollY;
+
+        elements.forEach((element, index) => {
+            const elementTop = element.offsetTop;
+            const elementBottom = elementTop + element.offsetHeight;
+
+            if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+                sliderItems.forEach(item => item.classList.remove('active'));
+                sliderItems[index].classList.add('active');
             }
-        }
-    });
-
-
-
-    //==========================================
-    // wow
-    //=========================================
-
-    var wow = new WOW({
-        mobile: false 
-    });
-    wow.init();
-
-
-// =========================================
-// magnificPopup
-// =========================================
-
-    $('.popup-img').magnificPopup({
-        type: 'image',
-        gallery: {
-            enabled: true
-        }
-    });
-
-    $('.video-link').magnificPopup({
-        type: 'iframe'
-    });
-
-
-// =========================================
-//      featured slider
-// =========================================       
-
-
-    $('.featured_slider').slick({
-        centerMode: true,
-        dote: true,
-        centerPadding: '60px',
-        slidesToShow: 3,
-        speed: 1500,
-        index: 2,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '40px',
-                    slidesToShow: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '40px',
-                    slidesToShow: 1
-                }
-            }
-        ]
-    });
-
-
-
-// =========================================
-// Counter
-// =========================================   
-
-    $('.statistic-counter').counterUp({
-        delay: 10,
-        time: 2000
-    });
-
-
-
-// =========================================
-// Scroll Up
-// =========================================   
-
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 600) {
-            $('.scrollup').fadeIn('slow');
-        } else {
-            $('.scrollup').fadeOut('slow');
-        }
-    });
-    $('.scrollup').click(function () {
-        $("html, body").animate({scrollTop: 0}, 1000);
-        return false;
-    });
-
-
-// =========================================
-// About us accordion 
-// =========================================   
-
-    $("#faq_main_content").collapse({
-        accordion: true,
-        open: function () {
-            this.addClass("open");
-            this.css({height: this.children().outerHeight()});
-        },
-        close: function () {
-            this.css({height: "0px"});
-            this.removeClass("open");
-        }
-    });
-
-// =========================================
-// Team Skillbar active js
-// =========================================   
-
-
-    jQuery('.teamskillbar').each(function () {
-        jQuery(this).find('.teamskillbar-bar').animate({
-            width: jQuery(this).attr('data-percent')
-        }, 6000);
-    });
-
-
-
-
-    //End
-
-});
-
-
-// =========================================
-//  Portfolio Isotop
-// =========================================   
-
-$(function () {
-    // Initialize Isotope
-    var $notes = $(".grid").isotope({
-        itemSelector: ".grid-item"
-    });
-
-    // On filter button click
-    $(".filters-button-group .button").on("click", function (e) {
-        var $this = $(this);
-
-        // Prevent default behaviour
-        e.preventDefault();
-
-        // Toggle the active class on the correct button
-        $(".filters-button-group .button").removeClass("is-checked");
-        $this.addClass("is-checked");
-
-        // Get the filter data attribute from the button
-        $notes.isotope({
-            filter: $this.attr("data-filter")
         });
+    }
 
+    sliderItems.forEach((item, index) => {
+        item.addEventListener('click', function () {
+            isScrolling = true; // Disable updateSlider temporarily
+
+            const targetElement = elements[index];
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+
+            // Manually set the active state
+            sliderItems.forEach(item => item.classList.remove('active'));
+            sliderItems[index].classList.add('active');
+
+            // Re-enable updateSlider after scrolling is done
+            setTimeout(() => {
+                isScrolling = false;
+            }, 1000); // Adjust timeout based on animation duration
+        });
     });
+
+    window.addEventListener('scroll', updateSlider);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

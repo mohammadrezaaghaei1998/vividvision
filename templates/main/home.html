@@ -1,154 +1,668 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WSI</title>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
-    <style>
-        body {
-  font-family: 'Noto Sans', sans-serif;
-  color:#616161 /*#757575*/;
-  background-color:#eeeeee;
- }
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container d-flex justify-content-center">
+  <div class="col-lg-4 d-flex justify-content-center mt-5" >
+      <img src="{% static 'assets/images/logo.png' %}" width="150" alt="">
+  </div>
 
-.container {
-  margin: auto;
-  max-width: 1024px;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  position:relative;
-}
+</div>
 
-.box {
-  width: auto ;
-  height: 500px;
-  background: #fff;
-  margin-top:50px;
-  margin-left: 100px;
-  margin-right: 100px;
-  border-radius:5px;
-  box-shadow: 6px 18px 18px rgba(0, 0, 0, 0.08), -6px 18px 18px rgba(0, 0, 0, 0.08);
-}
+<nav class="navbar navbar-expand-lg navbar-light mb-5">
+  <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style=" background: linear-gradient(to right, #f9f295, #e0aa3e, #faf398, #b88a44);">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#aboutus">About Us</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#services">Services</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#topclients">Top Clients</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#blogs">Blogs</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#contactus">Contact</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
 
-.animation{
-  margin-top:20%;
-  display:inline-block;
-  margin-bottom:5%;
-}
 
-h1{
-  font-size:32px;
-  font-weight:400;
-  text-transform:uppercase;
-  margin:0;
-}
-p{
-  font-size:16px;
-  font-weight:700;
-  margin:0;
-}
+<!-- Header Start -->
 
-a{
-  color: #f6921e;
-  font-weight: bold;
-  text-decoration: none;
-  margin-left:5px;
-}
+<!-- <div class="flex-container bkg__spotlight"></div> -->
+<header id="header">
+  {% for banner in banners %}
+    <video autoplay muted loop playsinline class="home-page-main-video">
+        <source src="{{ banner.video_banner.url }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+  {% endfor %}
+    <!-- <div id="video-title-home-page">
+        <h1 class="col-lg-12 text-shadow1" id="text">. Wide . Sky . International .</h1>
+        <p class="text-shadow2">Where Dreams Come Back To Reality</p>
+    </div> -->
 
-.one, .two, .three {
-  display:block;
-  float:left;
-}
-
-.one {
-  background: url('data:image/svg+xml,%3Csvg%20version%3D%221.1%22%0A%09%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xmlns%3Aa%3D%22http%3A%2F%2Fns.adobe.com%2FAdobeSVGViewerExtensions%2F3.0%2F%22%0A%09%20x%3D%220px%22%20y%3D%220px%22%20width%3D%2281px%22%20height%3D%2280.5px%22%20viewBox%3D%220%200%2081%2080.5%22%20style%3D%22overflow%3Ascroll%3Benable-background%3Anew%200%200%2081%2080.5%3B%22%0A%09%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.st0%7Bfill%3A%23383838%3B%7D%0A%3C%2Fstyle%3E%0A%3Cdefs%3E%0A%3C%2Fdefs%3E%0A%3Cpath%20class%3D%22st0%22%20d%3D%22M30.3%2C68.2c1.2%2C0.2%2C2.3%2C0.9%2C3.8%2C1.2c1.6%2C0.3%2C2.7%2C0.6%2C4%2C0.4l4.9%2C9.6c0.6%2C0.9%2C1.4%2C1.1%2C2.3%2C0.9l15.3-4.9%0A%09c0.5-0.3%2C1-1%2C0.9-2.3l-1.8-10.6c2-1.6%2C3.6-3.7%2C5.3-5.8l10.5%2C0.6c1.1%2C0.6%2C2.1-0.4%2C2.3-1.1L81%2C40.7c0.2-0.8-0.4-2.1-1.1-2.3l-10.2-3.8%0A%09c-0.3-2.5-1.4-4.8-2.5-7.5l5.9-8.5c0.6-1.1%2C0.4-1.9-0.2-2.9l-12-10.7c-0.3-0.5-1.6-0.3-2.5%2C0.3l-8%2C6.9c-1.2-0.2-2.3-0.9-3.8-1.2%0A%09c-1.6-0.3-2.7-0.6-4-0.4L37.7%2C1c-0.6-0.9-1.4-1.1-2.3-0.9L20.1%2C5c-0.5%2C0.3-1%2C1-0.9%2C2.3l1.8%2C10.6c-2%2C1.6-3.6%2C3.7-5.3%2C5.8L5.3%2C23%0A%09c-0.8-0.2-1.7%2C0.4-2%2C1.6L0%2C40.2c-0.2%2C0.8%2C0.4%2C2.1%2C1.1%2C2.3l9.8%2C3.7c0.7%2C2.6%2C1.4%2C5.2%2C2.5%2C7.5l-6%2C8.9c-0.6%2C0.7-0.4%2C2%2C0.3%2C2.5l12%2C10.7%0A%09c0.7%2C0.5%2C1.9%2C0.8%2C2.4%2C0.1L30.3%2C68.2z%20M26.7%2C37.3c1.6-7.4%2C9.1-12.3%2C16.5-10.8S55.6%2C35.7%2C54%2C43.1c-1.6%2C7.4-9.1%2C12.3-16.5%2C10.7%0A%09C30.1%2C52.3%2C25.1%2C44.7%2C26.7%2C37.3L26.7%2C37.3z%22%2F%3E%0A%3C%2Fsvg%3E');
-  width:80px;
-  height:80px;
-  background-size:100% 100%;
-  background-repeat:no-repeat;
-  margin-top:-10px;
-  margin-right:8px;
-}
-
-.two {
-  background: url('data:image/svg+xml,%3Csvg%20version%3D%221.1%22%0A%09%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xmlns%3Aa%3D%22http%3A%2F%2Fns.adobe.com%2FAdobeSVGViewerExtensions%2F3.0%2F%22%0A%09%20x%3D%220px%22%20y%3D%220px%22%20width%3D%22103px%22%20height%3D%22103.7px%22%20viewBox%3D%220%200%20103%20103.7%22%0A%09%20style%3D%22overflow%3Ascroll%3Benable-background%3Anew%200%200%20103%20103.7%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.st0%7Bfill%3A%23F6921E%3B%7D%0A%3C%2Fstyle%3E%0A%3Cdefs%3E%0A%3C%2Fdefs%3E%0A%3Cpath%20class%3D%22st0%22%20d%3D%22M87.3%2C64.8c0.3-1.5%2C1.1-2.9%2C1.6-4.9c0.4-2%2C0.7-3.5%2C0.5-5.1l12.3-6.3c1.2-0.8%2C1.4-1.8%2C1.1-2.9l-6.3-19.6%0A%09c-0.4-0.6-1.3-1.3-2.9-1.1l-13.5%2C2.3c-2.1-2.5-4.7-4.7-7.4-6.8l0.8-13.4C74.3%2C5.8%2C73%2C4.5%2C72%2C4.3L52.1%2C0c-1-0.2-2.7%2C0.5-2.9%2C1.5%0A%09l-4.8%2C13c-3.2%2C0.4-6.1%2C1.8-9.5%2C3.2l-10.9-7.5c-1.4-0.8-2.5-0.5-3.7%2C0.3L6.5%2C25.8c-0.6%2C0.4-0.4%2C2%2C0.4%2C3.2l8.8%2C10.2%0A%09c-0.3%2C1.5-1.1%2C2.9-1.5%2C4.9c-0.4%2C2-0.7%2C3.5-0.6%2C5.1L1.2%2C55.4c-1.2%2C0.8-1.4%2C1.8-1.1%2C2.9l6.3%2C19.6c0.4%2C0.6%2C1.3%2C1.3%2C2.9%2C1.1l13.5-2.3%0A%09c2.1%2C2.5%2C4.7%2C4.7%2C7.4%2C6.8l-0.8%2C13.4c-0.2%2C1%2C0.6%2C2.2%2C2.1%2C2.5l20%2C4.2c1%2C0.2%2C2.7-0.5%2C2.9-1.5l4.7-12.6c3.3-0.9%2C6.6-1.7%2C9.5-3.2L80.1%2C94%0A%09c0.9%2C0.7%2C2.5%2C0.5%2C3.2-0.4L97%2C78.3c0.7-0.9%2C1-2.4%2C0.1-3.1L87.3%2C64.8z%20M47.8%2C69.5C38.3%2C67.5%2C32%2C57.8%2C34%2C48.3%0A%09c2-9.5%2C11.7-15.8%2C21.2-13.8c9.5%2C2%2C15.7%2C11.7%2C13.7%2C21.2C66.9%2C65.2%2C57.3%2C71.5%2C47.8%2C69.5L47.8%2C69.5z%22%2F%3E%0A%3C%2Fsvg%3E');
-  width:100px;
-  height:100px;
-  background-size:100% 100%;
-  background-repeat:no-repeat;
-}
-
-/* pap */
-/*
-.two {
-  background: url('data:image/svg+xml,%3Csvg%20version%3D%221.1%22%0A%09%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xmlns%3Aa%3D%22http%3A%2F%2Fns.adobe.com%2FAdobeSVGViewerExtensions%2F3.0%2F%22%0A%09%20x%3D%220px%22%20y%3D%220px%22%20width%3D%22103px%22%20height%3D%22103.7px%22%20viewBox%3D%220%200%20103%20103.7%22%0A%09%20style%3D%22overflow%3Ascroll%3Benable-background%3Anew%200%200%20103%20103.7%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.st0%7Bfill%3A%235197d6%3B%7D%0A%3C%2Fstyle%3E%0A%3Cdefs%3E%0A%3C%2Fdefs%3E%0A%3Cpath%20class%3D%22st0%22%20d%3D%22M87.3%2C64.8c0.3-1.5%2C1.1-2.9%2C1.6-4.9c0.4-2%2C0.7-3.5%2C0.5-5.1l12.3-6.3c1.2-0.8%2C1.4-1.8%2C1.1-2.9l-6.3-19.6%0A%09c-0.4-0.6-1.3-1.3-2.9-1.1l-13.5%2C2.3c-2.1-2.5-4.7-4.7-7.4-6.8l0.8-13.4C74.3%2C5.8%2C73%2C4.5%2C72%2C4.3L52.1%2C0c-1-0.2-2.7%2C0.5-2.9%2C1.5%0A%09l-4.8%2C13c-3.2%2C0.4-6.1%2C1.8-9.5%2C3.2l-10.9-7.5c-1.4-0.8-2.5-0.5-3.7%2C0.3L6.5%2C25.8c-0.6%2C0.4-0.4%2C2%2C0.4%2C3.2l8.8%2C10.2%0A%09c-0.3%2C1.5-1.1%2C2.9-1.5%2C4.9c-0.4%2C2-0.7%2C3.5-0.6%2C5.1L1.2%2C55.4c-1.2%2C0.8-1.4%2C1.8-1.1%2C2.9l6.3%2C19.6c0.4%2C0.6%2C1.3%2C1.3%2C2.9%2C1.1l13.5-2.3%0A%09c2.1%2C2.5%2C4.7%2C4.7%2C7.4%2C6.8l-0.8%2C13.4c-0.2%2C1%2C0.6%2C2.2%2C2.1%2C2.5l20%2C4.2c1%2C0.2%2C2.7-0.5%2C2.9-1.5l4.7-12.6c3.3-0.9%2C6.6-1.7%2C9.5-3.2L80.1%2C94%0A%09c0.9%2C0.7%2C2.5%2C0.5%2C3.2-0.4L97%2C78.3c0.7-0.9%2C1-2.4%2C0.1-3.1L87.3%2C64.8z%20M47.8%2C69.5C38.3%2C67.5%2C32%2C57.8%2C34%2C48.3%0A%09c2-9.5%2C11.7-15.8%2C21.2-13.8c9.5%2C2%2C15.7%2C11.7%2C13.7%2C21.2C66.9%2C65.2%2C57.3%2C71.5%2C47.8%2C69.5L47.8%2C69.5z%22%2F%3E%0A%3C%2Fsvg%3E');
-  width:100px;
-  height:100px;
-  background-size:100% 100%;
-  background-repeat:no-repeat;
-}
-*/
-/* pap */
-
-.three {
-  background: url('data:image/svg+xml,%3Csvg%20version%3D%221.1%22%0A%09%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xmlns%3Aa%3D%22http%3A%2F%2Fns.adobe.com%2FAdobeSVGViewerExtensions%2F3.0%2F%22%0A%09%20x%3D%220px%22%20y%3D%220px%22%20width%3D%2281px%22%20height%3D%2280.5px%22%20viewBox%3D%220%200%2081%2080.5%22%20style%3D%22overflow%3Ascroll%3Benable-background%3Anew%200%200%2081%2080.5%3B%22%0A%09%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.st0%7Bfill%3A%23383838%3B%7D%0A%3C%2Fstyle%3E%0A%3Cdefs%3E%0A%3C%2Fdefs%3E%0A%3Cpath%20class%3D%22st0%22%20d%3D%22M30.3%2C68.2c1.2%2C0.2%2C2.3%2C0.9%2C3.8%2C1.2c1.6%2C0.3%2C2.7%2C0.6%2C4%2C0.4l4.9%2C9.6c0.6%2C0.9%2C1.4%2C1.1%2C2.3%2C0.9l15.3-4.9%0A%09c0.5-0.3%2C1-1%2C0.9-2.3l-1.8-10.6c2-1.6%2C3.6-3.7%2C5.3-5.8l10.5%2C0.6c1.1%2C0.6%2C2.1-0.4%2C2.3-1.1L81%2C40.7c0.2-0.8-0.4-2.1-1.1-2.3l-10.2-3.8%0A%09c-0.3-2.5-1.4-4.8-2.5-7.5l5.9-8.5c0.6-1.1%2C0.4-1.9-0.2-2.9l-12-10.7c-0.3-0.5-1.6-0.3-2.5%2C0.3l-8%2C6.9c-1.2-0.2-2.3-0.9-3.8-1.2%0A%09c-1.6-0.3-2.7-0.6-4-0.4L37.7%2C1c-0.6-0.9-1.4-1.1-2.3-0.9L20.1%2C5c-0.5%2C0.3-1%2C1-0.9%2C2.3l1.8%2C10.6c-2%2C1.6-3.6%2C3.7-5.3%2C5.8L5.3%2C23%0A%09c-0.8-0.2-1.7%2C0.4-2%2C1.6L0%2C40.2c-0.2%2C0.8%2C0.4%2C2.1%2C1.1%2C2.3l9.8%2C3.7c0.7%2C2.6%2C1.4%2C5.2%2C2.5%2C7.5l-6%2C8.9c-0.6%2C0.7-0.4%2C2%2C0.3%2C2.5l12%2C10.7%0A%09c0.7%2C0.5%2C1.9%2C0.8%2C2.4%2C0.1L30.3%2C68.2z%20M26.7%2C37.3c1.6-7.4%2C9.1-12.3%2C16.5-10.8S55.6%2C35.7%2C54%2C43.1c-1.6%2C7.4-9.1%2C12.3-16.5%2C10.7%0A%09C30.1%2C52.3%2C25.1%2C44.7%2C26.7%2C37.3L26.7%2C37.3z%22%2F%3E%0A%3C%2Fsvg%3E');
-  width:80px;
-  height:80px;
-  background-size:100% 100%;
-  background-repeat:no-repeat;
-  margin-top:-50px;
-  margin-left:-10px;
-}
-
-@keyframes spin-one {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(-359deg) ;
-    transform: rotate(-359deg) ;
-  }
-}
-
-.spin-one {
-  -webkit-animation: spin-one 1.5s infinite linear;
-  animation: spin-one 1.5s infinite linear;
-}
-
-@keyframes spin-two {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(-359deg);
-    transform: rotate(359deg);
-  }
-}
-
-.spin-two {
-  -webkit-animation: spin-two 2s infinite linear;
-  animation: spin-two 2s infinite linear;
-}
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="box">
-         <div class="animation">
-          <div class="one spin-one"></div>
-          <div class="two spin-two"></div>
-          <div class="three spin-one"></div>
-         </div>
-       <h1>Under maintenance</h1>
-       <p>Update in progress.  We’ll be back soon!</p>
-       </div>
+    <div class="col-lg-12  d-flex  align-items-center justify-content-center" style="margin-top: -180px;">
+     <div class="row d-flex align-items-center" >
+        <div class="col-lg-12" id="video-title-home-page">
+          <h1 class="display-4 text-white fw-bold text-center text-shadow1-header">Wide <strong style="font-size: 70px;">.</strong> Sky <strong style="font-size: 70px;">.</strong> International</h1>
+          <p class="lead text-white text-center text-shadow2-header">Where Dreams Come Back To Reality</p>
+        </div>
      </div>
-</body>
-</html>
+    </div>
+</header>
+<!-- Header End -->
 
 
 
 
+<!-- About Us Start -->
+<section class="about-section" id="aboutus">
+    <div class="container">
+        <div class="row">                
+            <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
+                <div class="inner-column">
+                    <div class="sec-title " data-aos="fade-up" data-aos-delay="600">
+                        <div class="three d-flex justify-content-start mb-5 mt-5" >
+                            <h1 style="margin-top: 40px;">About Us</h1>
+                        </div>
+                        <h2 data-aos="fade-right" data-aos-delay="600">We Are The Leader In <br>  Marketing Strategies</h2>
+                    </div>
+                    <div class="text" data-aos="fade-left" data-aos-delay="600">Since our establishment, we have proudly
+                      served a diverse range of individual and
+                      corporate clients, delivering tailored
+                      solutions that meet their unique needs.
+                      Overthe past 11 years, we have built a
+                      strong reputation for excellence and
+                      reliability, particularly during our
+                      operations in Turkey, where we laid the
+                      foundation for our expertise.</div>
+                  <div class="text" data-aos="fade-down" data-aos-delay="600">
+                    With a
+                    professional team that brings extensive
+                    knowledge and experience to every
+                    project, we have successfully collaborated
+                    with businesses from various industries,
+                    addressing their challenges with
+                    innovative strategies. Our team’s
+                    dedication to understanding the specific
+                    goals and expectations of each client
+                    allows us to provide services that are not
+                    only effective but also aligned with their
+                    vision and objectives.
+                  </div>
+
+                  <div class="text" data-aos="fade-down" data-aos-delay="600">
+                      Our journey has been marked by continuous growth, and our experience in Turkey
+                      played a vital role in shaping our comprehensive approach to business solutions. This
+                      has enabled us to refine our processes and expand our capabilities, ensuring that we
+                      consistently deliver outstanding results that exceed expectations.
+                  </div>
+
+                 
+                    <div class="btn-box" data-aos="fade-left" data-aos-delay="600">
+                        <a href="#contactus" class="theme-btn btn-style-one">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Column -->
+            <div class="image-column col-lg-6 col-md-12 col-sm-12 mb-5 mt-5" data-aos="fade-up" data-aos-delay="600">
+                <div class="inner-column wow fadeInLeft">
+                  <!-- <div class="author-desc">
+                    <h2 data-aos="fade-up" data-aos-delay="600">Rahul Kumar Yadav</h2>
+                    <span data-aos="fade-down" data-aos-delay="600">Web Developer</span>
+                  </div> -->
+                    <figure class="image-1" data-aos="fade-right" data-aos-delay="600"><a href="#" class="lightbox-image" data-fancybox="images"><img title="About Us" src="{% static 'assets/images/logo.png' %}" alt=""></a></figure>
+                 
+                </div>
+            </div>
+          
+        </div>
+       <div class="sec-title" data-aos="fade-right" data-aos-delay="600">
+                        <span class="title">Our Future Goal</span>
+                        <h2>We want to lead in innovation & Technology</h2>
+        </div>
+      <div class="text" data-aos="fade-down" data-aos-delay="600">
+        Our vision is to deliver high-quality services
+        that are both affordable and adaptable to
+        meet the unique needs of our clients. 
+          </div>
+           <div class="text" data-aos="fade-down" data-aos-delay="600">
+            primary objective is to design and
+            implement tailored programs that align
+            with our clients' specific requirements,
+            aiming to optimize and enhance their
+            workflows effectively.
+          </div>
+           <div class="text"  data-aos="fade-down" data-aos-delay="600">                
+            To achieve this, we begin by conducting
+            a comprehensive analysis of the client's
+            existing workflow to identify areas that
+            require improvement or innovation.          </div>
+           <div class="text"  data-aos="fade-down" data-aos-delay="600">
+            Based on these insights, we develop a
+            detailed action plan and establish a
+            structured timeline to ensure seamless
+            execution.           </div>
+           <div class="text"  data-aos="fade-down" data-aos-delay="600">
+            
+            Together, we embark on a
+            journey of growth and empowerment,
+            strengthening our collaboration and
+            driving success.          </div>
+    </div>
+</section>
+<!-- About Us End -->
+
+
+
+
+<!-- Our Services Start -->
+<div class="three" id="services"  data-aos="fade-down" data-aos-delay="600">
+    <h1>Our Services</h1>
+</div>
+<main class="page-content">
+  
+    <div class="card"  data-aos="fade-up" data-aos-delay="600">
+      <div class="content">
+        <h2 class="title">VR & AR</h2>
+        <p class="copy">Experience immersive worlds with cutting-edge AR and VR solutions.</p>
+        <!-- <button class="btn">View Trips</button> -->
+      </div>
+    </div>
+    <div class="card"  data-aos="fade-down" data-aos-delay="400">
+      <div class="content">
+        <h2 class="title">Marketing Strategy</h2>
+        <p class="copy">Boost your brand’s growth with innovative marketing strategies.</p>
+        <!-- <button class="btn">View Trips</button> -->
+      </div>
+    </div>
+    <div class="card" data-aos="fade-right" data-aos-delay="500">
+      <div class="content">
+        <h2 class="title">Artificial Intelligence</h2>
+        <p class="copy">Transform your business operations with powerful AI solutions.</p>
+        <!-- <button class="btn">Book Now</button> -->
+      </div>
+    </div>
+    <div class="card" data-aos="fade-left" data-aos-delay="300">
+      <div class="content">
+        <h2 class="title">Digital Marketing</h2>
+        <p class="copy">Reach your audience effectively with smart digital marketing.</p>
+        <!-- <button class="btn">Book Now</button> -->
+      </div>
+    </div>
+    <div class="card" data-aos="fade-down" data-aos-delay="700">
+        <div class="content">
+          <h2 class="title">Web/Mobile Apps</h2>
+          <p class="copy">Enhance your experience with innovative web and mobile apps.</p>
+          <!-- <button class="btn">Book Now</button> -->
+        </div>
+    </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="400">
+        <div class="content">
+          <h2 class="title">Business Development</h2>
+          <p class="copy">Drive growth and success with strategic business development.</p>
+          <!-- <button class="btn">Book Now</button> -->
+        </div>
+    </div>
+    <div class="card" data-aos="fade-right" data-aos-delay="500">
+        <div class="content">
+          <h2 class="title">Social Marketing</h2>
+          <p class="copy">Engage your audience and amplify your brand with social marketing.</p>
+          <!-- <button class="btn">Book Now</button> -->
+        </div>
+    </div>
+    <div class="card" data-aos="fade-down" data-aos-delay="700">
+      <div class="content">
+        <h2 class="title">3D Animation</h2>
+        <p class="copy">Bring your ideas to life with stunning 3D animation.</p>
+        <!-- <button class="btn">Book Now</button> -->
+      </div>
+  </div>
+</main>
+<!-- Our Services End -->
+
+
+
+
+
+<!-- Top Clients Start -->
+<section class="history-area" id="topclients" style="background-color: black;" data-aos="fade-left" data-aos-delay="600">
+    <div class="three"  data-aos="fade-down" data-aos-delay="600">
+        <h1>Our Top Clients</h1>
+    </div>
+    <div class="container mt-4"  data-aos="fade-left" data-aos-delay="600">
+      <div class="row">
+       
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="history-slid" class="carousel slide" data-ride="carousel" data-interval="false">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="carousel-item row">
+                <div class="col-lg-6 col-md-12 pl-0">
+                  <div class="history-img">
+                    <img class="img-fluid" src="{% static 'assets/images/16.jpg' %}" alt="" />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12 pr-0">
+                  <div class="history-content">
+                    <p class="title-bg-small primary-bg wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="500ms">
+                      Üçüncü Binyıl</p>
+                    <h2 class="column-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="700ms">AI-Powered Robotics & Consultancy for <span>Üçüncü Binyıl</span></h2>
+                    <p>
+                      We provided strategic consulting and AI-powered robotics solutions to Üçüncü Binyıl, helping them enhance their operations and integrate advanced technologies into their workflow.
+                    </p>
+                    <p>
+                      Our expertise in AI and robotics allowed Üçüncü Binyıl to implement innovative solutions, improving efficiency and driving future growth.
+                    </p>
+                  </div>
+                </div>
+              </div><!-- End off item-->
+
+              <div class="carousel-item row">
+                <div class="col-lg-6 col-md-12 pl-0">
+                  <div class="history-img">
+                    <img class="img-fluid" src="{% static 'assets/images/15.png' %}" alt="" />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12 pr-0">
+                  <div class="history-content">
+                    <p class="title-bg-small primary-bg wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="500ms">
+                      D & R Online Bookstore</p>
+                      <h2 class="column-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="700ms">POS System Development for <span>D & R Online Bookstore</span></h2>
+                      <p>
+                        We had the opportunity to design and implement a customized POS system for D & R Online Bookstore in Turkey, enhancing their sales operations and customer service.
+                      </p>
+                      <p>
+                        Our solution streamlined their transaction processes, providing seamless integration for inventory management, order tracking, and payment processing.
+                      </p>
+                  </div>
+                </div>
+              </div><!-- End off item-->
+
+              <div class="carousel-item row">
+                <div class="col-lg-6 col-md-12 pl-0">
+                  <div class="history-img">
+                    <img class="img-fluid" src="{% static 'assets/images/14.jpg' %}" alt="" />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12 pr-0">
+                  <div class="history-content">
+                    <p class="title-bg-small primary-bg wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="500ms">
+                      Beaconhouse School</p>
+                      <h2 class="column-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="700ms">Proud Partner of <span>Beaconhouse School</span></h2>
+                      <p>
+                        We had the privilege of collaborating with Beaconhouse School in Oman, providing them with customized media solutions to enhance their presence and reach.
+                      </p>
+                      <p>
+                        Our partnership enabled Beaconhouse School to showcase their educational services and events, ensuring better engagement with the community and broader visibility.
+                      </p>
+                  </div>
+                </div>
+              </div><!-- End off item-->
+
+              <div class="carousel-item row">
+                <div class="col-lg-6 col-md-12 pl-0">
+                  <div class="history-img">
+                    <img class="img-fluid" src="{% static 'assets/images/17.avif' %}" alt="" />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12 pr-0">
+                  <div class="history-content">
+                    <p class="title-bg-small primary-bg wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="500ms">
+                      Raddison Panaroma</p>
+                    <h2 class="column-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="700ms">Showcasing Excellence at <span>Raddison Panaroma</span></h2>
+                    <p>
+                      Through our collaboration with Raddison Panaroma, we bring their remarkable initiatives and events to the forefront.
+                    </p>
+                    <p>
+                      Our efforts focus on highlighting the innovative projects and engaging experiences that make Raddison Panaroma a standout name in the industry.
+                    </p>
+                  </div>
+                </div>
+              </div><!-- End off item-->
+
+
+              <div class="carousel-item row">
+                <div class="col-lg-6 col-md-12 pl-0">
+                  <div class="history-img">
+                    <img class="img-fluid" src="{% static 'assets/images/18.jpg' %}" alt="" />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12 pr-0">
+                  <div class="history-content">
+                    <p class="title-bg-small primary-bg wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="500ms">
+                     Horizon Complex</p>
+                     <h2 class="column-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="700ms">Creative Vision for <span>Horizon Gym</span></h2>
+                     <p>
+                       A professional advertising video was produced to highlight the dynamic and energetic spirit of Horizon Gym, capturing its unique identity.
+                     </p>
+                     <p>
+                       The final result showcased exceptional quality and creativity, serving as a testament to high standards in production and storytelling.
+                     </p>
+                  </div>
+                </div>
+              </div><!-- End off item-->
+
+
+              <div class="carousel-item row active">
+                <div class="col-lg-6 col-md-12 pl-0">
+                  <div class="history-img">
+                    <img class="img-fluid" src="{% static 'assets/images/12.jpg' %}" alt="" />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12 pr-0">
+                  <div class="history-content">
+                    <p class="title-bg-small primary-bg wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="500ms">
+                      Ghala Golf Club</p>
+                    <h2 class="column-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="700ms">Proud Media Partner of <span>Ghala Golf Club</span></h2>
+                    <p>
+                      As the trusted media partner of Ghala Golf Club, we collaborate to bring their exciting events and developments to a wider audience.
+                    </p>
+                    <p>
+                      Our partnership allows us to share the latest news, events, and promotions from Ghala Golf Club, ensuring their growth and visibility within the community.
+                    </p>
+                  </div>
+                </div>
+              </div><!-- End off item-->
+
+
+            </div><!-- End off carusel inner -->
+            <!-- Indicators -->
+            <ol class="carousel-indicators text-center">
+              <li data-target="#history-slid" data-slide-to="0">6</li>
+              <li data-target="#history-slid" data-slide-to="1">5</li>
+              <li data-target="#history-slid" data-slide-to="2">4</li>
+              <li data-target="#history-slid" data-slide-to="3">3</li>
+              <li data-target="#history-slid" data-slide-to="4">2</li>
+              <li data-target="#history-slid" data-slide-to="5" class="active">1</li>
+
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<!-- Top Clients End -->
+
+
+
+<!-- Blogs Start -->
+<div class="container mt-5 mb-5" id="blogs">
+  <div class="three mb-5"  data-aos="fade-down" data-aos-delay="600">
+    <h1>Our Blogs</h1>
+</div>
+<div id="blogCarousel" class="carousel slide blog-carousel" data-bs-ride="carousel" data-bs-touch="true" style="margin-bottom: 200px;" data-aos="fade-right" data-aos-delay="600">
+  <!-- Carousel Items -->
+  <div class="carousel-inner">
+      {% for chunk in blog_chunks %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              <div class="row">
+                  {% for blog in chunk %}
+                      {% if blog %}
+                      <div class="col-lg-4">
+                          <div class="card-blog">
+                              <img src="{{ blog.image.url }}" class="card-img-top" alt="{{ blog.title }}">
+                              <div class="card-body-blog">
+                                  <h5 class="card-title-blog mt-4">{{ blog.title }}</h5>
+                                  <a href="{% url 'blog_detail' blog.id %}" class="btn blog-button">View More</a>
+                              </div>
+                          </div>
+                      </div>
+                      {% endif %}
+                  {% endfor %}
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+
+  <!-- Carousel Controls -->
+  <a class="carousel-control-prev" href="#blogCarousel" role="button" data-bs-slide="prev" data-aos="fade-right" data-aos-delay="600">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#blogCarousel" role="button" data-bs-slide="next" data-aos="fade-left" data-aos-delay="600">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+  </a>
+</div>
+<!-- Blogs End -->
+
+
+
+
+
+<!-- Gallery Start -->
+<!-- <div class="external " id="gallery"  data-aos="fade-up" data-aos-delay="600">
+    <div class="three mb-5"  data-aos="fade-right" data-aos-delay="600">
+        <h1>Gallery</h1>
+    </div>
+    <div class="horizontal-scroll-wrapper">
+      <div class="img-wrapper slower">
+        <a href="https://altphotos.com/photo/stylish-parisian-cafe-terrace-279/" target="_blank" rel="noopener"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/paris-cafe-terrace.jpg" alt="">
+        </a>
+      </div>
+  
+      <div class="img-wrapper faster">
+        <a href="https://altphotos.com/photo/retro-boy-doll-wearing-elegant-clothes-330/" target="_blank" rel="noopener">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/antiquedollboy.jpg" alt="">
+        </a>
+      </div>
+  
+      <div class="img-wrapper slower vertical">
+        <a href="https://altphotos.com/photo/clocks-shop-exposition-window-reflecting-the-streets-277/" target="_blank" rel="noopener">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/windowshopclock.jpg" alt="">
+        </a>
+      </div>
+  
+      <div class="img-wrapper slower slower-down">
+        <a href="https://altphotos.com/photo/swans-and-ducks-swimming-in-a-river-264/" target="_blank" rel="noopener">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/swanduckriver.jpg" alt="">
+        </a>
+      </div>
+  
+      <div class="img-wrapper">
+        <a href="https://altphotos.com/photo/sidewalk-terrace-of-a-blue-facade-cafe-312/" target="_blank" rel="noopener">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/cafe-terrace.jpg" alt="">
+        </a>
+      </div>
+  
+      <div class="img-wrapper slower">
+        <a href="https://altphotos.com/photo/paris-waterfront-at-sunset-1555/" target="_blank" rel="noopener">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/paris-seine-boat.jpg" alt="">
+        </a>
+      </div>
+  
+      <div class="img-wrapper faster1">
+        <a href="https://altphotos.com/photo/old-man-leaning-over-the-barrier-looking-at-the-river-265/" target="_blank" rel="noopener">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/old-man-river.jpg" alt="">
+        </a>
+      </div>
+      
+      <div class="img-wrapper slower slower2">
+        <a href="https://altphotos.com/photo/cafe-terrace-with-a-row-of-retro-tables-261/" target="_blank" rel="noopener">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/cafe-table-street.jpg" alt="">
+        </a>
+      </div>
+      
+      <div class="img-wrapper">
+        <a href="https://altphotos.com/photo/street-scene-with-pedestrians-and-dogs-318/" target="_blank" rel="noopener">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/street-scene-people.jpg" alt="">
+        </a>
+      </div>
+      
+      <div class="img-wrapper slower">
+        <a href="https://altphotos.com/photo/tourist-barge-on-the-river-seine-near-notre-dame-266/" target="_blank" rel="noopener">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/notre-dame-river-boat.jpg" alt="">
+        </a>
+      </div>
+      
+      <div class="img-wrapper slower last">
+        <a href="https://altphotos.com/photo/skulls-decoration-in-a-shop-window-331/" target="_blank" rel="noopener">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/shop-window-reflection.jpg" alt="">
+        </a>
+      </div>
+    </div>
+    <p class="scroll-info"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" ><path d="M50,67.1c-0.6,0-1.2-0.2-1.8-0.7c-3.8-3.8-7.7-7.7-11.5-11.5c-2.3-2.3,1.2-5.8,3.5-3.5c2.5,2.5,4.9,4.9,7.4,7.4      c0-13.7,0-27.4,0-41.2c0-0.6,0.2-1.2,0.5-1.5c0,0,0,0,0,0c0.4-0.6,1.1-1,2-0.9c13.7,0.3,26.4,7.2,33.5,19.1      C96.5,55.9,84.7,85,60.2,91.6C35.5,98.2,11.6,79.1,11.1,54c-0.1-3.2,4.9-3.2,5,0c0.3,13.8,8.4,26.4,21.3,31.5      c12.5,5,27.1,1.9,36.6-7.5c9.5-9.5,12.5-24.1,7.5-36.6c-4.8-12.1-16.3-20.1-29-21.2c0,12.8,0,25.5,0,38.3      c2.5-2.5,4.9-4.9,7.4-7.4c2.3-2.3,5.8,1.3,3.5,3.5c-3.9,3.9-7.8,7.8-11.8,11.8C51.2,66.9,50.6,67.1,50,67.1z"/></svg></span> Try scrolling down</p>
+   
+</div> -->
+<!-- Gallery End -->
+
+  
+
+
+
+
+<!-- Contact Us Start -->
+<section class="get-in-touch" id="contactus">
+  <div class="container d-flex justify-content-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 d-flex justify-content-center">
+        <form method="post" action="{% url 'contact' %}">
+          {% csrf_token %}
+          <div class="contact-form row">
+            <h1 class="title" data-aos="fade-down" data-aos-delay="600">Get in touch</h1>
+            <div class="form-field col x-50" data-aos="fade-right" data-aos-delay="600">
+              <input id="name" class="input-text js-input" type="text" name="name" required>
+              <label class="label" for="name">Name</label>
+            </div>
+            <div class="form-field col x-50" data-aos="fade-left" data-aos-delay="600">
+              <input id="email" class="input-text js-input" type="email" name="email" required>
+              <label class="label" for="email">E-mail</label>
+            </div>
+          </div>
+          <div class="contact-form row">
+            <div class="form-field col-lg-12" data-aos="fade-left" data-aos-delay="600">
+              <input id="message" class="input-text js-input" type="text" name="message" required>
+              <label class="label" for="message">Message</label>
+            </div>
+            <div class="form-field col x-100 d-flex justify-content-center" data-aos="fade-right" data-aos-delay="600">
+              <input class="submit-btn" type="submit" value="Submit">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Top Clients End -->
+
+
+
+
+<!-- Location Start -->
+<div class="container  d-flex justify-content-center">
+  <div class="tabs col-lg-12">
+    <div class="tab-2 col-lg-6" data-aos="fade-right" data-aos-delay="600">
+      <label for="tab2-1">Turkey</label>
+      <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
+      <div>
+        <div class="row">
+          <!-- Left Section: Map -->
+          <div class="col-12 col-lg-6 mb-4">
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2126.9649478205324!2d28.991681568068145!3d41.069371328595565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab6f955a6399d%3A0x699d5d4d184901b3!2zQXRha2FuIFNrLiwgxZ5pxZ9saS_EsHN0YW5idWwsIFTDvHJraXll!5e0!3m2!1sen!2som!4v1736874367371!5m2!1sen!2som" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+      
+          <!-- Right Section: Contact Information -->
+          <div class="col-12 col-lg-6 pl-5">
+            <p><strong>Address:</strong>Mecidiyeköy Mahallesi,Atakan Sokak, Istanbul/Turkey</p>
+            <p><strong>Phone:</strong> +90 552 559 8519</p>
+            <p><strong>Working Hours:</strong></p>
+            <ul>
+              <li>Monday - Friday: 9:00 AM - 5:00 PM</li>
+              <li>Saturday: Closed</li>
+              <li>Sunday: Closed</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-2  col-lg-6" data-aos="fade-left" data-aos-delay="600">
+      <label for="tab2-2">Oman</label>
+      <input id="tab2-2" name="tabs-two" type="radio">
+      <div>
+        <div class="row">
+          <!-- Left Section: Map -->
+          <div class="col-12 col-lg-6 mb-4">
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d228.48883667622016!2d58.242719115346354!3d23.610737864422468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2som!4v1736874958489!5m2!1sen!2som" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+      
+          <!-- Right Section: Contact Information -->
+          <div class="col-12 col-lg-6 pl-5">
+            <p><strong>Address:</strong> Al Mazoon Blvd, Bait Al Asail Building, Muscat/Oman </p>
+            <p><strong>Phone:</strong> +968 9337 9835</p>
+            <p><strong>Working Hours:</strong></p>
+            <ul>
+              <li>Sunday - Thursday: 9:00 AM - 5:00 PM</li>
+              <li>Friday: Closed</li>
+              <li>Saturday: Closed</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+ <!-- Location End -->
+
+
+
+
+
+<div class="three mb-5"  data-aos="fade-right" data-aos-delay="600" id="partners">
+  <h1>Our Partners</h1>
+</div>
+<section class="logo-section" data-aos="fade-up" data-aos-delay="600">
+  <div class="logo-container">
+    {% for partner in partners %}
+      <img src="{{ partner.image.url }}" alt="Partner Logo" class="img-fluid">
+    {% empty %}
+      <p>No logos available</p>
+    {% endfor %}
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<div class="slider">
+  <div class="slider-item active" data-target="header" data-title="header"></div>
+  <div class="slider-item" data-target="aboutus" data-title="aboutus"></div>
+  <div class="slider-item" data-target="services" data-title="services"></div>
+  <div class="slider-item" data-target="topclients" data-title="topclients"></div>
+  <div class="slider-item" data-target="blogs" data-title="blogs"></div>
+  <div class="slider-item" data-target="contactus" data-title="contactus"></div>
+  <div class="slider-item" data-target="partners" data-title="partners"></div>
+</div>
+
+{% endblock content %}

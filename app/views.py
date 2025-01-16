@@ -1,46 +1,41 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from .forms import ContactForm
-from .models import Contact , Image , Video, Partner_Company, Team, Banner
+from .models import Contact , Video, Partner_Company,Banner, Blog
 
-# Create your views here.
+from itertools import zip_longest
 
-
-
+def chunk_blogs(blogs, n):
+    """Split the blogs into chunks of size n."""
+    args = [iter(blogs)] * n
+    return zip_longest(*args, fillvalue=None)
 
 def home(request):
     partners = Partner_Company.objects.all() 
     banners = Banner.objects.all() 
-   
-    return render(request, 'main/home.html', {'partners': partners,'banners': banners})
+    blogs = Blog.objects.all()
+    
+    # Split blogs into chunks of 3
+    blog_chunks = chunk_blogs(blogs, 3)
+    
+    return render(request, 'main/home.html', {
+        'partners': partners,
+        'banners': banners,
+        'blog_chunks': blog_chunks
+    })
 
 
-def about(request):
-    partners = Partner_Company.objects.all()
-    team_members = Team.objects.all()  # Fetch all team members
-    return render(request, "main/about.html", {'partners': partners, 'team_members': team_members})
+
+def blog_detail(request, blog_id):
+    blog = get_object_or_404(Blog, id=blog_id)
+    return render(request, 'main/blogs.html', {'blog': blog})
 
 
-def contactus(request):
-    return render(request,"main/contactus.html")
 
-
-def service(request):
-    return render(request,"main/service.html")
 
 def gallery(request):
-    # youtubevideourls = YoutubeVideoUrl.objects.all() 
-    images_by_category = {
-        'street': Image.objects.filter(category='street'),
-        'advertisement': Image.objects.filter(category='advertisement'),
-        'fashionista': Image.objects.filter(category='fashionista'),
-        'artist': Image.objects.filter(category='artist'),
-    }
+    
     videos = Video.objects.all() 
-    return render(request, "main/gallery.html", {
-        'images_by_category': images_by_category,
-        'videos': videos
-        # 'youtubevideourls':youtubevideourls
-    })
+    return render(request, "main/gallery.html", {'videos': videos})
 
 
 
