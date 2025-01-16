@@ -4,3 +4,6 @@ platformdirs==4.3.6
 virtualenv==20.26.6
 
 
+django 
+gunicorn
+pillow
