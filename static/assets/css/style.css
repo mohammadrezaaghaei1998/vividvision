@@ -1659,21 +1659,25 @@ body .footer .content > div .image {
 
 
 
-.logo-section {
-  width: 100%;
-  overflow: hidden;
-}
 
 .logo-container {
   display: flex;
-  animation: scroll-left 15s linear infinite;
-}
-.logo-container img {
- width: 100px;
- height: 80px;
- margin-right: 40px;
+  animation: scroll-left 20s linear infinite;
+  white-space: nowrap; 
 }
 
+.logo-container img {
+  width: 100px; 
+  height: 80px;
+  margin-right: 10px; 
+}
+
+@media only screen and (max-width: 575px) {
+  .logo-container img {
+    width: 60px; 
+    margin-right: 5px; 
+  }
+}
 
 
 @keyframes scroll-left {
@@ -1682,5 +1686,11 @@ body .footer .content > div .image {
   }
   100% {
     transform: translateX(-100%);
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .logo-container {
+    animation: scroll-left 30s linear infinite; 
   }
 }
