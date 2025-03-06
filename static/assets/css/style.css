@@ -1658,39 +1658,44 @@ body .footer .content > div .image {
 
 
 
-
+.logo-slider {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+}
 
 .logo-container {
   display: flex;
+  align-items: center;
+  gap: 20px; /* Space between logos */
   animation: scroll-left 20s linear infinite;
-  white-space: nowrap; 
+  width: max-content; /* Allow scrolling */
 }
 
 .logo-container img {
-  width: 100px; 
-  height: 80px;
-  margin-right: 10px; 
+  width: 100px;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensures proper logo scaling */
 }
-
-@media only screen and (max-width: 575px) {
-  .logo-container img {
-    width: 60px; 
-    margin-right: 5px; 
-  }
-}
-
 
 @keyframes scroll-left {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
-@media only screen and (max-width: 575px) {
+/* Adjust sizes for mobile */
+@media (max-width: 575px) {
   .logo-container {
     animation: scroll-left 30s linear infinite; 
+  }
+
+  .logo-container img {
+    width: 60px;
+    height: auto;
   }
 }
