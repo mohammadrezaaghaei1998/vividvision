@@ -635,21 +635,24 @@
 
 
 
-<div class="three mb-5"  data-aos="fade-right" data-aos-delay="600" id="partners">
+ <div class="three mb-5" data-aos="fade-right" data-aos-delay="600" id="partners">
   <h1>Our Partners</h1>
 </div>
-<section class="logo-section" data-aos="fade-up" data-aos-delay="600">
+
+<section class="logo-slider" data-aos="fade-up" data-aos-delay="600">
   <div class="logo-container">
     {% for partner in partners %}
       <img src="{{ partner.image.url }}" alt="Partner Logo" class="img-fluid">
     {% empty %}
       <p>No logos available</p>
     {% endfor %}
+
+    <!-- Duplicate logos to create an infinite loop effect -->
+    {% for partner in partners %}
+      <img src="{{ partner.image.url }}" alt="Partner Logo" class="img-fluid">
+    {% endfor %}
   </div>
 </section>
-
-
-
 
 
 
